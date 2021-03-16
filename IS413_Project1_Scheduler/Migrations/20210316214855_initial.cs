@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace IS413_Project1_Scheduler.Migrations
 {
@@ -12,6 +13,7 @@ namespace IS413_Project1_Scheduler.Migrations
                 {
                     AppointmentId = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
+                    DateAndTime = table.Column<DateTime>(type: "TEXT", nullable: false),
                     GroupName = table.Column<string>(type: "TEXT", nullable: false),
                     GroupSize = table.Column<int>(type: "INTEGER", nullable: false),
                     Email = table.Column<string>(type: "TEXT", nullable: false),

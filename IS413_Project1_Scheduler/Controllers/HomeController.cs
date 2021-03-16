@@ -13,13 +13,38 @@ namespace IS413_Project1_Scheduler.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        private AppointmentListContext context { get; set; }
+
+        public HomeController(ILogger<HomeController> logger, AppointmentListContext context)
         {
             _logger = logger;
+            this.context = context;
         }
 
         public IActionResult Index()
         {
+            return View();
+        }
+
+        public IActionResult ScheduleAppointment()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult AddAppointmentInfo()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult AddAppointmentInfo(Appointment appointment)
+        {
+            if (ModelState.IsValid)
+            {
+                context.Appointments.Add(appointment);
+                context.SaveChanges();
+            }
             return View();
         }
 
