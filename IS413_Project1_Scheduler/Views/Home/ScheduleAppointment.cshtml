@@ -11,7 +11,8 @@
 {
     
     <div class="container">
-        <form asp-action="ScheduleAppointment">
+        <form asp-action="AddAppointmentInfo" method="get">
+            <input type="hidden" value="@time" name="ScheduledTime" />
             <button class="btn" type="submit">@time</button>
         </form>
     </div>

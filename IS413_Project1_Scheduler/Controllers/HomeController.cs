@@ -1,4 +1,4 @@
-﻿using System;
+﻿//using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using IS413_Project1_Scheduler.Models;
 using IS413_Project1_Scheduler.Models.ViewModels;
+using System;
 
 namespace IS413_Project1_Scheduler.Controllers
 {
@@ -42,12 +43,17 @@ namespace IS413_Project1_Scheduler.Controllers
         [HttpPost]
         public IActionResult ScheduleAppointment(DateTime ScheduledTime)
         {
-            return View("AddAppointmentInfo", ScheduledTime);
+            //return View("AddAppointmentInfo", ScheduledTime);
+            return RedirectToAction("AddAppointmentInfo", ScheduledTime);
         }
 
         [HttpGet]
-        public IActionResult AddAppointmentInfo()
+        public IActionResult AddAppointmentInfo(DateTime ScheduledTime)
         {
+            if (ScheduledTime == DateTime.MinValue)            {                ViewBag.Time = "";            }
+            else            {                ViewBag.Time = ScheduledTime;            }
+
+
             return View();
         }
 
