@@ -3,11 +3,8 @@
 @model Appointment
 
 <form asp-action="AddAppointmentInfo" method="post">
-    <label asp-for="DateAndTime">Date: @ViewBag.Time</label>
-    <input value="@ViewBag.Time" asp-for="DateAndTime"/><br />
-
-    @*<label asp-for="DateAndTime">Date: </label>
-    <input value="@ViewBag.Time" readonly /><br />*@
+    <label asp-for="DateAndTime">Date: </label>
+    <input value="@ViewBag.Time" asp-for="DateAndTime" readonly /><br />
 
     <label asp-for="Group.GroupName">Group Name: </label>
     <input asp-for="Group.GroupName" /><br />

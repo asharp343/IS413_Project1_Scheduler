@@ -51,7 +51,7 @@ namespace IS413_Project1_Scheduler.Controllers
         public IActionResult AddAppointmentInfo(DateTime ScheduledTime)
         {
             if (ScheduledTime == DateTime.MinValue)            {                ViewBag.Time = "";            }
-            else            {                ViewBag.Time = ScheduledTime;            }
+            else            {                ViewBag.Time = ScheduledTime.ToString("s");            }
 
 
             return View();
@@ -76,11 +76,13 @@ namespace IS413_Project1_Scheduler.Controllers
 
         public IActionResult ViewAppointments()
         {
+
+
             return View(new AppointmentListViewModel {
 
                 Appointments = context.Appointments,
 
-                Groups = context.Groups,
+                Groups = context.Groups
 
             });
         }
