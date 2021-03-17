@@ -37,7 +37,6 @@ namespace IS413_Project1_Scheduler.Controllers
 
                 Groups = context.Groups,
 
-
             }) ;
         }
 

@@ -7,13 +7,23 @@
 
 @model AppointmentListViewModel
 
+<form>
+    <select>
+        @foreach (DateTime day in Model.AvailableDays)
+        {
+            <option value="day"> @day.DayOfWeek, @day.ToString("MMM") @day.Day</option>
+        }
+    </select>
+</form>
+
+
 @foreach (DateTime time in Model.AvailableTimes)
 {
     bool Available = !Model.Appointments.Any(q => q.DateAndTime == time);
 
     if (Available)
     {
-        <div class="container">
+        <div class="btn btn-info">
             <form asp-action="AddAppointmentInfo" method="get">
                 <input type="hidden" value="@time" name="ScheduledTime" />
                 <button class="btn" type="submit">@time</button>
