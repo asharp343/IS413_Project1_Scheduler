@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace IS413_Project1_Scheduler.Migrations
 {
     [DbContext(typeof(AppointmentListContext))]
-    [Migration("20210316233123_initial")]
+    [Migration("20210317222814_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,25 +27,6 @@ namespace IS413_Project1_Scheduler.Migrations
                     b.Property<DateTime>("DateAndTime")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("GroupId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("GroupSize")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("AppointmentId");
-
-                    b.HasIndex("GroupId");
-
-                    b.ToTable("Appointments");
-                });
-
-            modelBuilder.Entity("IS413_Project1_Scheduler.Models.Group", b =>
-                {
-                    b.Property<int>("GroupId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -54,21 +35,15 @@ namespace IS413_Project1_Scheduler.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<int>("GroupSize")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("PhoneNumber")
                         .HasColumnType("TEXT");
 
-                    b.HasKey("GroupId");
+                    b.HasKey("AppointmentId");
 
-                    b.ToTable("Groups");
-                });
-
-            modelBuilder.Entity("IS413_Project1_Scheduler.Models.Appointment", b =>
-                {
-                    b.HasOne("IS413_Project1_Scheduler.Models.Group", "Group")
-                        .WithMany()
-                        .HasForeignKey("GroupId");
-
-                    b.Navigation("Group");
+                    b.ToTable("Appointments");
                 });
 #pragma warning restore 612, 618
         }

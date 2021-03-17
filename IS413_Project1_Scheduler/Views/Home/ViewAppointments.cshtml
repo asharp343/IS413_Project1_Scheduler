@@ -5,4 +5,10 @@
 }
 
 @model AppointmentListViewModel
- 
+
+
+@foreach (Appointment appointment in Model.Appointments)
+{
+    <div>@appointment.AppointmentId;</div>
+    <div>@appointment.Email;</div>
+}
