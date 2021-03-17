@@ -76,7 +76,13 @@ namespace IS413_Project1_Scheduler.Controllers
 
         public IActionResult ViewAppointments()
         {
-            return View();
+            return View(new AppointmentListViewModel {
+
+                Appointments = context.Appointments,
+
+                Groups = context.Groups,
+
+            });
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
