@@ -9,11 +9,18 @@
 
 @foreach (DateTime time in Model.AvailableTimes)
 {
+    bool Available = !Model.Appointments.Any(q => q.DateAndTime == time);
+
+    if (Available)
+    {
+        <div class="container">
+            <form asp-action="AddAppointmentInfo" method="get">
+                <input type="hidden" value="@time" name="ScheduledTime" />
+                <button class="btn" type="submit">@time</button>
+            </form>
+        </div>
+    }
     
-    <div class="container">
-        <form asp-action="AddAppointmentInfo" method="get">
-            <input type="hidden" value="@time" name="ScheduledTime" />
-            <button class="btn" type="submit">@time</button>
-        </form>
-    </div>
+
+
 }

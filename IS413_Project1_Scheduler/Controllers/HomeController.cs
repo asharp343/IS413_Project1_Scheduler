@@ -37,6 +37,7 @@ namespace IS413_Project1_Scheduler.Controllers
 
                 Groups = context.Groups,
 
+
             }) ;
         }
 
@@ -66,7 +67,7 @@ namespace IS413_Project1_Scheduler.Controllers
                 context.Appointments.Add(appointment);
                 context.SaveChanges();
             }
-            return View();
+            return View("ViewAppointments");
         }
 
         public IActionResult Privacy()
