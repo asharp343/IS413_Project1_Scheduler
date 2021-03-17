@@ -14,8 +14,6 @@ namespace IS413_Project1_Scheduler.Models.ViewModels
 
         public IEnumerable<Appointment> Appointments { get; set; }
 
-        public IEnumerable<Group> Groups { get; set; }
-
         public List<DateTime> AvailableTimes { get; set; } = GenerateDates();
 
         public List<DateTime> AvailableDays { get; set; } = GenerateDays();

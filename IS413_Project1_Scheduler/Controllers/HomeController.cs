@@ -35,7 +35,6 @@ namespace IS413_Project1_Scheduler.Controllers
             {
                 Appointments = context.Appointments,
 
-                Groups = context.Groups,
 
             }) ;
         }
@@ -62,11 +61,10 @@ namespace IS413_Project1_Scheduler.Controllers
         {
             if (ModelState.IsValid)
             {
-                context.Groups.Add(appointment.Group);
                 context.Appointments.Add(appointment);
                 context.SaveChanges();
             }
-            return View("ViewAppointments");
+            return RedirectToAction("ViewAppointments");
         }
 
         public IActionResult Privacy()
@@ -82,7 +80,6 @@ namespace IS413_Project1_Scheduler.Controllers
 
                 Appointments = context.Appointments,
 
-                Groups = context.Groups
 
             });
         }
