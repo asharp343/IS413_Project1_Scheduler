@@ -25,6 +25,25 @@ namespace IS413_Project1_Scheduler.Migrations
                     b.Property<DateTime>("DateAndTime")
                         .HasColumnType("TEXT");
 
+                    b.Property<int?>("GroupId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("GroupSize")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("AppointmentId");
+
+                    b.HasIndex("GroupId");
+
+                    b.ToTable("Appointments");
+                });
+
+            modelBuilder.Entity("IS413_Project1_Scheduler.Models.Group", b =>
+                {
+                    b.Property<int>("GroupId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -33,15 +52,21 @@ namespace IS413_Project1_Scheduler.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("GroupSize")
-                        .HasColumnType("INTEGER");
-
                     b.Property<string>("PhoneNumber")
                         .HasColumnType("TEXT");
 
-                    b.HasKey("AppointmentId");
+                    b.HasKey("GroupId");
 
-                    b.ToTable("Appointments");
+                    b.ToTable("Groups");
+                });
+
+            modelBuilder.Entity("IS413_Project1_Scheduler.Models.Appointment", b =>
+                {
+                    b.HasOne("IS413_Project1_Scheduler.Models.Group", "Group")
+                        .WithMany()
+                        .HasForeignKey("GroupId");
+
+                    b.Navigation("Group");
                 });
 #pragma warning restore 612, 618
         }

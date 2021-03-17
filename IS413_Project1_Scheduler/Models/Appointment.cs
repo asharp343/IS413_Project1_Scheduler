@@ -17,14 +17,11 @@ namespace IS413_Project1_Scheduler.Models
         public DateTime DateAndTime { get; set; }
 
         [Required]
-        public string GroupName { get; set; }
+        public Group Group { get; set; }
 
         [Required]
         public int GroupSize { get; set; }
 
-        [Required]
-        public string Email { get; set; }
-
-        public string PhoneNumber { get; set; }
+        
     }
 }

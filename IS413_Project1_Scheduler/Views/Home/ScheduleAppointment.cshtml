@@ -3,3 +3,16 @@
 *@
 @{
 }
+
+
+@model AppointmentListViewModel
+
+@foreach (DateTime time in Model.AvailableTimes)
+{
+    
+    <div class="container">
+        <form asp-action="ScheduleAppointment">
+            <button class="btn" type="submit">@time</button>
+        </form>
+    </div>
+}

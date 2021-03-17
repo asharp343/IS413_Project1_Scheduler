@@ -9,5 +9,8 @@ namespace IS413_Project1_Scheduler.Models
         { }
 
         public DbSet<Appointment> Appointments { get; set; }
+
+        public DbSet<Group> Groups { get; set; }
+
     }
 }

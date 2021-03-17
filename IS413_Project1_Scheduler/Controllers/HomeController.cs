@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using IS413_Project1_Scheduler.Models;
+using IS413_Project1_Scheduler.Models.ViewModels;
 
 namespace IS413_Project1_Scheduler.Controllers
 {
@@ -26,9 +27,22 @@ namespace IS413_Project1_Scheduler.Controllers
             return View();
         }
 
-        public IActionResult ScheduleAppointment()
+        [HttpGet]
+        public IActionResult ScheduleAppointment() 
         {
-            return View();
+            return View(new AppointmentListViewModel
+            {
+                Appointments = context.Appointments,
+
+                Groups = context.Groups,
+
+            }) ;
+        }
+
+        [HttpPost]
+        public IActionResult ScheduleAppointment(DateTime ScheduledTime)
+        {
+            return View("AddAppointmentInfo", ScheduledTime);
         }
 
         [HttpGet]
@@ -42,6 +56,7 @@ namespace IS413_Project1_Scheduler.Controllers
         {
             if (ModelState.IsValid)
             {
+                context.Groups.Add(appointment.Group);
                 context.Appointments.Add(appointment);
                 context.SaveChanges();
             }
