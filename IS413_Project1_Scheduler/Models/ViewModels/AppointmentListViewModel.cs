@@ -14,25 +14,29 @@ namespace IS413_Project1_Scheduler.Models.ViewModels
 
         public IEnumerable<Appointment> Appointments { get; set; }
 
-        public List<DateTime> AvailableTimes { get; set; } = GenerateDates();
+        public List<List<DateTime>> AvailableTimes { get; set; } = GenerateDates();
 
         public List<DateTime> AvailableDays { get; set; } = GenerateDays();
 
 
         // Generates available time slots for the next 7 days
-        public static List<DateTime> GenerateDates()
+        public static List<List<DateTime>> GenerateDates()
         {
             DateTime CurrentTime = new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day, 8, 0, 0);
-            List<DateTime> AvailableTimeSlots = new List<DateTime>();
+            List<List<DateTime>> AvailableTimeSlots = new List<List<DateTime>>();
 
             foreach (int i in Enumerable.Range(1, 8))
             {
+                List<DateTime> AvailableTimesInDay = new List<DateTime>();
+
                 foreach (int j in Enumerable.Range(0, 13))
                 {
-                    AvailableTimeSlots.Add(CurrentTime);
+
+                    AvailableTimesInDay.Add(CurrentTime);
                     CurrentTime = CurrentTime.AddHours(1);
                 }
-                CurrentTime = CurrentTime.Subtract(new TimeSpan(12, 0, 0));
+                AvailableTimeSlots.Add(AvailableTimesInDay);
+                CurrentTime = CurrentTime.Subtract(new TimeSpan(13, 0, 0));
                 CurrentTime = CurrentTime.AddDays(1);
             }
             return AvailableTimeSlots;

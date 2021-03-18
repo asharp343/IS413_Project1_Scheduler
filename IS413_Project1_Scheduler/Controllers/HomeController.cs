@@ -42,7 +42,6 @@ namespace IS413_Project1_Scheduler.Controllers
         [HttpPost]
         public IActionResult ScheduleAppointment(DateTime ScheduledTime)
         {
-            //return View("AddAppointmentInfo", ScheduledTime);
             return RedirectToAction("AddAppointmentInfo", ScheduledTime);
         }
 
