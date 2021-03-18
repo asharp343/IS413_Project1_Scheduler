@@ -1,10 +1,17 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+    ViewData["Header"] = "Welcome to the Temple Scheduler App";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome to the Temple Scheduler App</h1>
-    <h3>We are excited to have you come visit the temple</h3>
+
+    <h3 class="m-2">We are excited to have you come visit the temple</h3>
     <img src="~/img/LaytonTemple.jpg" /><br />
-    <a href="@Url.Action("ScheduleAppointment")" class="elements">Signup for an appointment</a>
+    <br />
+    <p>The Layton Utah temple will be opening late 2022</p>
+    <p>Location: 1400 East Oakhills Drive (approximate)</p>
+    <p>Layton, Utah  84040</p>
+    <p>Schedule your hour-long appointment today!</p>
+    <a class="elements btn btn-info mt-3 mb-5" asp-controller="Home" asp-action="ScheduleAppointment">Signup for an appointment</a>
+    <br />
 </div>

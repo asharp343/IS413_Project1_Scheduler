@@ -1,4 +1,4 @@
-﻿//using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -7,14 +7,15 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using IS413_Project1_Scheduler.Models;
 using IS413_Project1_Scheduler.Models.ViewModels;
-using System;
 
 namespace IS413_Project1_Scheduler.Controllers
 {
     public class HomeController : Controller
     {
+
         private readonly ILogger<HomeController> _logger;
 
+        // Create database context
         private AppointmentListContext context { get; set; }
 
         public HomeController(ILogger<HomeController> logger, AppointmentListContext context)
@@ -28,6 +29,8 @@ namespace IS413_Project1_Scheduler.Controllers
             return View();
         }
 
+
+        // Displays available times
         [HttpGet]
         public IActionResult ScheduleAppointment() 
         {
@@ -45,16 +48,15 @@ namespace IS413_Project1_Scheduler.Controllers
             return RedirectToAction("AddAppointmentInfo", ScheduledTime);
         }
 
+        // Displays form to add appointment info
         [HttpGet]
         public IActionResult AddAppointmentInfo(DateTime ScheduledTime)
         {
             if (ScheduledTime == DateTime.MinValue)            {                ViewBag.Time = "";            }
             else            {                ViewBag.Time = ScheduledTime.ToString("s");            }
-
-
             return View();
         }
-
+        
         [HttpPost]
         public IActionResult AddAppointmentInfo(Appointment appointment)
         {
@@ -62,8 +64,10 @@ namespace IS413_Project1_Scheduler.Controllers
             {
                 context.Appointments.Add(appointment);
                 context.SaveChanges();
+                return RedirectToAction("Index");
             }
-            return RedirectToAction("ViewAppointments");
+            ViewBag.Time = appointment.DateAndTime.ToString("s");
+            return View();
         }
 
         public IActionResult Privacy()
@@ -77,8 +81,9 @@ namespace IS413_Project1_Scheduler.Controllers
 
             return View(new AppointmentListViewModel {
 
-                Appointments = context.Appointments,
 
+                //Appointments = context.Appointments.Where(p => p.DateAndTime > DateTime.Now), // Displays only future dates
+                Appointments = context.Appointments.OrderBy(p => p.DateAndTime)
 
             });
         }

@@ -2,32 +2,27 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
+    ViewData["Title"] = "Schedule Appointment";
+    ViewData["Header"] = "Choose a Time";
 }
 
 
 @model AppointmentListViewModel
-@*<form>
-        <select>
-            @foreach (DateTime day in Model.AvailableDays)
-            {
-                <option value="day" name="day" id="day"> @day.DayOfWeek, @day.ToString("MMM") @day.Day</option>
-            }
 
-        </select>
-    </form>*@
 <link href="~/css/main.css" rel="stylesheet" />
-<h3 class="mt-5 mb-5 text-center" >Choose a Time</h3>
-<div class="continer mt-5 mb-5 AvailableTimeContainer" >
+
+<div class="continer mt-5 mb-5 AvailableTimeContainer">
     @foreach (List<DateTime> timeList in Model.AvailableTimes)
     {
-        
 
+        // List all available times
         <div class="AvailableTimeContainerDay">
             @foreach (DateTime time in timeList)
             {
+                // Check if time slot is available
                 bool Available = !Model.Appointments.Any(q => q.DateAndTime == time);
 
-                if(time.Hour == 8)
+                if (time.Hour == 8)
                 {
                     <div class="btn m-1 font-weight-bolder" style="font-size:120%">
                         <button class="btn" readonly><b><u>@timeList[0].ToString("MMMM"), @timeList[0].Day</u></b></button>
@@ -57,3 +52,4 @@
 
     }
 </div>
+<br /><br /><br />

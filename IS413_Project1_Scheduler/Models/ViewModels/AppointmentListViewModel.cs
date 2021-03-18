@@ -42,6 +42,7 @@ namespace IS413_Project1_Scheduler.Models.ViewModels
             return AvailableTimeSlots;
         }
 
+        // Generates the next 7 days of scheduling
         public static List<DateTime> GenerateDays()
         {
             DateTime CurrentTime = new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day);

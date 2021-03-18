@@ -2,13 +2,37 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
+    ViewData["Title"] = "Appointments";
+    ViewData["Header"] = "Scheduled Appointments";
 }
+
 
 @model AppointmentListViewModel
 
+<!-- Pull in the database and display the appointments that have already been set -->
+<br />
+<table class="table table-striped table-hover">
 
-@foreach (Appointment appointment in Model.Appointments)
-{
-    <div>@appointment.AppointmentId;</div>
-    <div>@appointment.Email;</div>
-}
+    <tr>
+        <th>Appointment ID</th>
+        <th>Date & Time</th>
+        <th>Group Size</th>
+        <th>Group Name</th>
+        <th>Email</th>
+        <th>Phone Number</th>
+    </tr>
+
+    @foreach (Appointment appointment in Model.Appointments)
+    {
+        <tr>
+            <td>@appointment.AppointmentId</td>
+            <td>@appointment.DateAndTime.ToString("MM/dd/yyyy h:mm tt")</td>
+            <td>@appointment.GroupSize</td>
+            <td>@appointment.GroupName</td>
+            <td>@appointment.Email</td>
+            <td>@appointment.PhoneNumber</td>
+        </tr>
+
+    }
+
+</table>

@@ -16,7 +16,8 @@ namespace IS413_Project1_Scheduler.Models
         [Required]
         public DateTime DateAndTime { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Input a valid number")]
+        [Range(1, 50, ErrorMessage = "Enter number between 1 and 50")]
         public int GroupSize { get; set; }
 
         [Required]
@@ -25,6 +26,7 @@ namespace IS413_Project1_Scheduler.Models
         [Required]
         public string Email { get; set; }
 
+        [RegularExpression("^\\D?(\\d{3})\\D?\\D?(\\d{3})\\D?(\\d{4})$", ErrorMessage = "Input Phone number like 555-555-5555")]
         public string? PhoneNumber { get; set; }
 
 

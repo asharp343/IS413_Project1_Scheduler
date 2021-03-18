@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - IS413_Project1_Scheduler</title>
+    <title>@ViewData["Title"] - IS413 Project1</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
 
     <link href="~/css/heroic-features.css" rel="stylesheet" />
@@ -11,27 +11,6 @@
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
-    <!--<header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">IS413_Project1_Scheduler</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>-->
 
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
@@ -43,12 +22,6 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" asp-controller="Home" asp-action="Index">
-                            Home
-                            <span class="sr-only">(current)</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" asp-controller="Home" asp-action="ScheduleAppointment">Sign Up</a>
                     </li>
                     <li class="nav-item">
@@ -59,28 +32,18 @@
         </div>
     </nav>
 
+    <h1 class="display-4 text-center mt-5">@ViewData["Header"]</h1>
+
 
     <!-- Render the whatever the current body is -->
     <div class="container">
-        
-            @RenderBody()
-        
+        @RenderBody()
     </div>
 
     <!-- Footer -->
-    <footer class="footer bg-dark">
-        <div class="container m-0 text-center text-white">
-            &copy; 2021 - IS413_Project1_Scheduler - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
+    <footer class="footer bg-dark text-center text-white " style="position:fixed" >
+        &copy; 2021 - IS413 Project1 - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
     </footer>
-
-    <!-- Footer
-    <footer class="py-5 bg-dark">
-        <div class="container">
-            <p class="m-0 text-center text-white">Copyright &copy; Your Website 2020</p>
-        </div>
-        <!-- /.container
-    </footer>-->
 
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
