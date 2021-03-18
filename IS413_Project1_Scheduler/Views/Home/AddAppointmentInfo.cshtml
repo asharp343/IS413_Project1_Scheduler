@@ -1,23 +1,70 @@
-﻿
+﻿@model Appointment
 
-@model Appointment
+
+
+
+<br />
+
+<h3>Add Appointment</h3>
+
+<br />
+
+<h5>Input your information below to sign up for the temple tour</h5>
+
+<br />
+
+
+
 
 <form asp-action="AddAppointmentInfo" method="post">
-    <label asp-for="DateAndTime">Date: </label>
-    <input value="@ViewBag.Time" asp-for="DateAndTime" readonly /><br />
 
-    <label asp-for="GroupName">Group Name: </label>
-    <input asp-for="GroupName" /><br />
+    <div class="form-group">
 
-    <label asp-for="GroupSize">Group Size: </label>
-    <input asp-for="GroupSize" /><br />
+        <label asp-for="DateAndTime">Date: </label>
 
-    <label asp-for="Email">Email: </label>
-    <input asp-for="Email" /><br />
+        <input value="@ViewBag.Time" asp-for="DateAndTime" readonly /><br />
 
-    <label asp-for="PhoneNumber">Phone Number: </label>
-    <input asp-for="PhoneNumber" /><br />
+    </div>
 
-    <button type="submit">Schedule Appointment</button>
+    <div class="form-group">
+
+        <label asp-for="GroupName">Group Name: </label>
+
+        <input asp-for="GroupName" /><br />
+
+    </div>
+
+    <div class="form-group">
+
+        <label asp-for="GroupSize">Group Size: </label>
+
+        <input asp-for="GroupSize" /><br />
+
+    </div>
+
+    <div class="form-group">
+
+        <label asp-for="Email">Email: </label>
+
+        <input asp-for="Email" /><br />
+
+    </div>
+
+    <div class="form-group">
+
+        <label asp-for="PhoneNumber">Phone Number: </label>
+
+        <input asp-for="PhoneNumber" /><br />
+
+    </div>
+
+    <div class="form-group">
+
+        <button class="btn-dark" type="submit">Schedule Appointment</button>
+
+    </div>
+
+
+
 </form>
 
