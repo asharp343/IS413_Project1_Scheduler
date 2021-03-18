@@ -11,13 +11,14 @@
     <select>
         @foreach (DateTime day in Model.AvailableDays)
         {
-            <option value="day"> @day.DayOfWeek, @day.ToString("MMM") @day.Day</option>
+            <option value="day" name="day" id="day"> @day.DayOfWeek, @day.ToString("MMM") @day.Day</option>
         }
     </select>
 </form>
 
 
-@foreach (DateTime time in Model.AvailableTimes)
+
+@foreach (DateTime time in Model.AvailableTimes.FindAll(x => x.Day == 17))
 {
     bool Available = !Model.Appointments.Any(q => q.DateAndTime == time);
 
