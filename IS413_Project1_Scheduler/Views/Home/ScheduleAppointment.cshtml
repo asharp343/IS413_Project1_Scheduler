@@ -15,14 +15,14 @@
 
         </select>
     </form>*@
-
+<link href="~/css/main.css" rel="stylesheet" />
 <h3 class="mt-5 mb-5 text-center" >Choose a Time</h3>
-<div class="continer mt-5 mb-5" style="display:flex; width:100%">
+<div class="continer mt-5 mb-5 AvailableTimeContainer" >
     @foreach (List<DateTime> timeList in Model.AvailableTimes)
     {
         
 
-        <div class="" style="display:flex; flex-direction:column">
+        <div class="AvailableTimeContainerDay">
             @foreach (DateTime time in timeList)
             {
                 bool Available = !Model.Appointments.Any(q => q.DateAndTime == time);
